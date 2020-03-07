@@ -12,6 +12,8 @@ namespace E1
             int filas;
             int columnas;
 
+            bool sonIguales = true;
+
             /* ----------- Matriz 1 ----------- */
 
             Console.WriteLine("Escribe el numero de filas de la Matriz 1");
@@ -38,7 +40,7 @@ namespace E1
             {
                 for (int j = 0; j < matriz1.GetLength(1); j++)
                 {
-                    Console.WriteLine("Matriz 1" + matriz1[i, j]);
+                    Console.WriteLine("Matriz 1: " + matriz1[i, j]);
                 }
             }
 
@@ -48,8 +50,42 @@ namespace E1
             {
                 for (int j = 0; j < matriz2.GetLength(1); j++)
                 {
-                    Console.WriteLine("Matriz 2" + matriz2[i, j]);
+                    Console.WriteLine("Matriz 2: " + matriz2[i, j]);
                 }
+            }
+
+            /* ----------- Compare Arrays ----------- */
+
+            // Check if they are not same length and exit
+            if (matriz1.Length != matriz2.Length)
+            {
+                Console.WriteLine("Las matrices no pueden ser comparadas");
+
+                return;
+            }
+
+            // Continue if they are same length
+            Console.WriteLine("Las matrices pueden ser comparadas");
+
+            for (int i = 0; i < matriz1.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz1.GetLength(1); j++)
+                {
+                    if (matriz1[i, j] != matriz2[i, j])
+                    {
+                        sonIguales = false;
+                    }
+                }
+            }
+
+            /* - Compare if value has changed after for execution - */
+            if (sonIguales)
+            {
+                Console.WriteLine("Las matrices son iguales");
+            }
+            else
+            {
+                Console.WriteLine("Las matrices no son iguales");
             }
         }
     }
