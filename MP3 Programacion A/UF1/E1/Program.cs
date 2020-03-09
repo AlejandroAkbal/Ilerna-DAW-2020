@@ -67,15 +67,26 @@ namespace E1
             // Continue if they are same length
             Console.WriteLine("Las matrices pueden ser comparadas");
 
-            for (int i = 0; i < matriz1.GetLength(0); i++)
+            // Catch exceptions if they arent equal
+            try
             {
-                for (int j = 0; j < matriz1.GetLength(1); j++)
+                // Compare 2D arrays
+                for (int i = 0; i < matriz1.GetLength(0); i++)
                 {
-                    if (matriz1[i, j] != matriz2[i, j])
+                    for (int j = 0; j < matriz1.GetLength(1); j++)
                     {
-                        sonIguales = false;
+                        if (matriz1[i, j] != matriz2[i, j])
+                        {
+                            sonIguales = false;
+                            break;
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Las matrices no son iguales");
+                throw;
             }
 
             /* - Compare if value has changed after for execution - */
