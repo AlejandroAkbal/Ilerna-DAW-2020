@@ -10,19 +10,19 @@ public class Main {
 
         Usuario usuario = new Usuario();
 
-        System.out.println("Por favor ingrese su nombre:");
+        System.out.println("\nPor favor ingrese su nombre:");
         usuario.setNombre(scanner.next());
 
-        System.out.println("Por favor ingrese su edad:");
+        System.out.println("\nPor favor ingrese su edad:");
         usuario.setEdad(scanner.nextInt());
 
         do {
-            System.out.println("Por favor ingrese su DNI:");
+            System.out.println("\nPor favor ingrese su DNI:");
         } while (!usuario.setDNI(scanner.next()));
 
-        System.out.println(usuario.toString());
+        System.out.println("\nUsuario creado correctamente: " + usuario.toString());
 
-        System.out.println("Fin del programa.\nGracias por utilizar la aplicación.");
+        System.out.println("\nFin del programa.\nGracias por utilizar la aplicación.");
 
     }
 }
