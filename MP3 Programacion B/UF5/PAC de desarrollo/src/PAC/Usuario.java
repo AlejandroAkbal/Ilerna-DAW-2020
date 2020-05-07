@@ -33,21 +33,21 @@ public class Usuario {
 
         // Comprobar que no sea menor a nueve (DNI sin guion) o mayor a 10 (DNI con guion)
         if (DNI.length() < 9 || DNI.length() > 10) {
-            System.out.println("El DNI no tiene la longitud esperada");
+            System.out.println("El DNI no tiene la longitud esperada.");
             return false;
         }
 
         // Comprobar que los 8 primeros caracteres son digitos
         for (int i = 0; i < 8; i++) {
             if (!Character.isDigit(DNI.charAt(i))) {
-                System.out.println("El caracter '" + DNI.charAt(i) + "' no es un numero");
+                System.out.println("El caracter '" + DNI.charAt(i) + "' no es un numero.");
                 return false;
             }
         }
 
         // Comprobar que el ultimo caracter es una letra
         if (!Character.isLetter(DNI.charAt(DNI.length() - 1))) {
-            System.out.println("El ultimo caracter '" + DNI.charAt(DNI.length() - 1) + "' no es una letra");
+            System.out.println("El ultimo caracter '" + DNI.charAt(DNI.length() - 1) + "' no es una letra.");
             return false;
         }
 
