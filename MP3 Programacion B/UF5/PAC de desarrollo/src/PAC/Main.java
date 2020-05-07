@@ -22,6 +22,38 @@ public class Main {
 
         System.out.println("\nUsuario creado correctamente: " + usuario.toString());
 
+
+        int accionSeleccionada;
+
+        do {
+
+            System.out.println("\nRealiza una nueva accion:");
+
+            System.out.println("1) Introduce un nuevo gasto");
+            System.out.println("2) Introduce un nuevo ingreso");
+            System.out.println("3) Mostrar gastos");
+            System.out.println("4) Mostrar ingresos");
+            System.out.println("5) Mostrar saldo");
+            System.out.println("0) Salir");
+
+            accionSeleccionada = scanner.nextInt();
+
+            switch (accionSeleccionada) {
+                case 1:
+
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("\nNinguna accion seleccionada!");
+                    break;
+
+            }
+
+        } while (accionSeleccionada != 0);
+
         System.out.println("\nFin del programa.\nGracias por utilizar la aplicación.");
 
     }
