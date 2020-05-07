@@ -23,6 +23,13 @@ public class Main {
         System.out.println("\nUsuario creado correctamente: " + usuario.toString());
 
 
+        Cuenta cuenta = new Cuenta(usuario);
+        System.out.println("\nCuenta creada correctamente: " + cuenta.toString());
+
+
+        /*
+         *  Valores del menu
+         */
         int accionSeleccionada;
 
         do {
