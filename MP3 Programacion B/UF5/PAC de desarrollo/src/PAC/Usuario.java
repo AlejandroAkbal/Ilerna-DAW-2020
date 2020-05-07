@@ -51,8 +51,13 @@ public class Usuario {
             return false;
         }
 
-        // Comprobar que hay un guion o no
-        // TODO
+        // Comprobar que hay un guion o no cuando la longitud sea de 10
+        if (DNI.length() == 10) {
+            if (DNI.charAt(DNI.length() - 2) != '-') {
+                System.out.println("El penultimo caracter '" + DNI.charAt(DNI.length() - 2) + "' no es un guion.");
+                return false;
+            }
+        }
 
 
         this.DNI = DNI;
