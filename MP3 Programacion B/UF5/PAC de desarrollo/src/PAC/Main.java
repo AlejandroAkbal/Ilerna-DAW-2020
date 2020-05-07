@@ -32,6 +32,9 @@ public class Main {
          */
         int accionSeleccionada;
 
+        double cantidad;
+        String description;
+
         do {
 
             System.out.println("\nRealiza una nueva accion:");
@@ -45,9 +48,41 @@ public class Main {
 
             accionSeleccionada = scanner.nextInt();
 
+
             switch (accionSeleccionada) {
                 case 1:
+                    System.out.println("Introduce la descripcion:");
+                    description = scanner.next();
 
+                    System.out.println("Introduce la cantidad:");
+                    cantidad = scanner.nextDouble();
+
+                        cuenta.addGastos(description, cantidad);
+                    System.out.println("Saldo restante: " + cuenta.getSaldo());
+                    break;
+
+                case 2:
+                    System.out.println("Introduce la descripcion:");
+                    description = scanner.next();
+
+                    System.out.println("Introduce la cantidad:");
+                    cantidad = scanner.nextDouble();
+
+                    cuenta.addIngresos(description, cantidad);
+
+                    System.out.println("Saldo restante: " + cuenta.getSaldo());
+                    break;
+
+                case 3:
+                    System.out.println("Gastos: " + cuenta.getGastos());
+                    break;
+
+                case 4:
+                    System.out.println("Ingresos: " + cuenta.getIngresos());
+                    break;
+
+                case 5:
+                    System.out.println("Saldo restante: " + cuenta.getSaldo());
                     break;
 
                 case 0:
