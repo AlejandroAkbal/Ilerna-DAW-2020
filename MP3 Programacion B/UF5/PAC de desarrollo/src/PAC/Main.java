@@ -57,7 +57,17 @@ public class Main {
                     System.out.println("Introduce la cantidad:");
                     cantidad = scanner.nextDouble();
 
+                    try {
+
                         cuenta.addGastos(description, cantidad);
+
+                    } catch (GastoException error) {
+
+                        System.out.println("Error: " + error.getMessage());
+                        break;
+                    }
+
+
                     System.out.println("Saldo restante: " + cuenta.getSaldo());
                     break;
 

@@ -36,6 +36,11 @@ public class Cuenta {
 
     /* ADD GASTOS & INGRESOS */
     public double addGastos(String description, double cantidad) throws GastoException {
+
+        if (cantidad > saldo) {
+            throw new GastoException("No tienes saldo suficiente.");
+        }
+
         gastos.add(new Gasto(cantidad, description));
 
         saldo -= cantidad;
@@ -73,3 +78,8 @@ public class Cuenta {
     }
 }
 
+class GastoException extends Exception {
+    public GastoException(String message) {
+        super(message);
+    }
+}
