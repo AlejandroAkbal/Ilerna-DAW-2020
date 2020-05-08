@@ -77,9 +77,3 @@ public class Cuenta {
                 '}';
     }
 }
-
-class GastoException extends Exception {
-    public GastoException(String message) {
-        super(message);
-    }
-}
