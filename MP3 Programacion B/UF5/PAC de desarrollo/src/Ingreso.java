@@ -1,5 +1,3 @@
-package PAC;
-
 public class Ingreso extends Dinero {
     private double ingreso;
     private String description;

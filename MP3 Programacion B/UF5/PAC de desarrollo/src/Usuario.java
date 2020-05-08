@@ -1,5 +1,3 @@
-package PAC;
-
 public class Usuario {
 
     private String nombre;

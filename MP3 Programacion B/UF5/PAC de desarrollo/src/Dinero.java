@@ -1,5 +1,3 @@
-package PAC;
-
 public abstract class Dinero {
 
     private double dinero;
