@@ -86,35 +86,29 @@ END;
 /* Parte 5 */
 CREATE OR REPLACE FUNCTION dia_de_la_semana 
 (v_dia_number IN NUMBER) 
-RETURN NUMBER 
+RETURN VARCHAR2 
 IS 
 	v_dia_varchar VARCHAR2(10);
 BEGIN
 	IF (v_dia_number = 0) THEN 
 		v_dia_varchar := 'LUNES';
-	END IF;
-	
-	IF (v_dia_number = 1) THEN 
+		
+	ELSIF (v_dia_number = 1) THEN 
 		v_dia_varchar := 'MARTES';
-	END IF;
-	
-	IF (v_dia_number = 2) THEN 
+		
+	ELSIF (v_dia_number = 2) THEN 
 		v_dia_varchar := 'MIERCOLES';
-	END IF;
-
-	IF (v_dia_number = 3) THEN 
+	
+	ELSIF (v_dia_number = 3) THEN 
 		v_dia_varchar := 'JUEVES';
-	END IF;
-
-	IF (v_dia_number = 4) THEN 
+	
+	ELSIF (v_dia_number = 4) THEN 
 		v_dia_varchar := 'VIERNES';
-	END IF;
-
-	IF (v_dia_number = 5) THEN 
+	
+	ELSIF (v_dia_number = 5) THEN 
 		v_dia_varchar := 'SABADO';
-	END IF;
-
-	IF (v_dia_number = 6) THEN 
+	
+	ELSIF (v_dia_number = 6) THEN 
 		v_dia_varchar := 'DOMINGO';
 	END IF;
 
