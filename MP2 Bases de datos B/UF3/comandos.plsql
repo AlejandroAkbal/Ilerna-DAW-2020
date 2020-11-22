@@ -156,3 +156,20 @@ END;
 BEGIN
 	DBMS_OUTPUT.PUT_LINE(dia_de_la_semana(2));
 END;
+
+/* Parte 7 */
+CREATE OR REPLACE FUNCTION numero_mas_grande 
+(v_numero_1 IN NUMBER, v_numero_2 IN NUMBER, v_numero_3 IN NUMBER)
+RETURN NUMBER 
+IS
+	v_numero_mas_grande NUMBER;
+BEGIN
+	v_numero_mas_grande := GREATEST(v_numero_1, v_numero_2, v_numero_3);
+
+	RETURN v_numero_mas_grande;
+END;
+/
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(numero_mas_grande(1,2,3));
+END;
