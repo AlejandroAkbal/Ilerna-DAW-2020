@@ -115,4 +115,44 @@ RETURN v_dia_varchar;
 END;
 /
 
-EXECUTE dia_de_la_semana(0);
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(dia_de_la_semana(0));
+END;
+
+/* Parte 6 */
+CREATE OR REPLACE FUNCTION dia_de_la_semana 
+(v_dia_number IN NUMBER) 
+RETURN VARCHAR2 
+IS 
+	v_dia_varchar VARCHAR2(10);
+BEGIN
+	CASE v_dia_number
+		WHEN 0 THEN 
+			v_dia_varchar := 'LUNES';
+				
+		WHEN 1 THEN 
+			v_dia_varchar := 'MARTES';
+				
+		WHEN 2 THEN 
+			v_dia_varchar := 'MIERCOLES';
+		
+		WHEN 3 THEN 
+			v_dia_varchar := 'JUEVES';
+		
+		WHEN 4 THEN 
+			v_dia_varchar := 'VIERNES';
+		
+		WHEN 5 THEN 
+			v_dia_varchar := 'SABADO';
+		
+		WHEN 6 THEN 
+			v_dia_varchar := 'DOMINGO';
+	END CASE;
+
+RETURN v_dia_varchar;
+END;
+/
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(dia_de_la_semana(2));
+END;
