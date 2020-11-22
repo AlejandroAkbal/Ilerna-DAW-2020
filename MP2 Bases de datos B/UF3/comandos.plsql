@@ -190,3 +190,32 @@ END;
 /
 
 EXECUTE suma_numeros_enteros_por_repeticion(5);
+
+/* Parte 9 */
+CREATE OR REPLACE FUNCTION es_numero_primo 
+(v_numero IN NUMBER)
+RETURN NUMBER 
+IS
+	v_numero_es_primo NUMBER;
+	v_contador NUMBER := 0;
+BEGIN
+	FOR l_numero IN 1 .. v_numero
+	LOOP
+		IF ((MOD(v_numero,l_numero)) = 0) THEN
+			v_contador := v_contador + 1;
+		END IF;
+	END LOOP;
+
+	IF (v_contador > 2) THEN
+		v_numero_es_primo := 0;
+	ELSE
+		v_numero_es_primo := 1;
+	END IF;
+
+	RETURN v_numero_es_primo;
+END;
+/
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(es_numero_primo(29));
+END;
