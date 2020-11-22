@@ -173,3 +173,20 @@ END;
 BEGIN
 	DBMS_OUTPUT.PUT_LINE(numero_mas_grande(1,2,3));
 END;
+
+/* Parte 8 */
+CREATE OR REPLACE PROCEDURE suma_numeros_enteros_por_repeticion 
+(v_numero_de_repeticiones IN NUMBER)
+IS
+	v_suma NUMBER := 0;
+BEGIN
+	FOR l_numero IN 0 .. v_numero_de_repeticiones
+	LOOP
+		v_suma := v_suma + l_numero;
+	END LOOP;
+
+	DBMS_OUTPUT.PUT_LINE(v_suma);
+END;
+/
+
+EXECUTE suma_numeros_enteros_por_repeticion(5);
