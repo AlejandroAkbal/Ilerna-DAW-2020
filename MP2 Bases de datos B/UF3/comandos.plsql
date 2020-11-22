@@ -219,3 +219,37 @@ END;
 BEGIN
 	DBMS_OUTPUT.PUT_LINE(es_numero_primo(29));
 END;
+
+/* Parte 10 */
+CREATE OR REPLACE FUNCTION primeros_numeros_primos 
+(v_numero IN NUMBER)
+RETURN NUMBER 
+IS
+	l_numero NUMBER := 1;
+	contador_numeros_primos NUMBER := 0;
+	v_suma NUMBER := 0;
+BEGIN
+	LOOP			
+		l_numero := l_numero + 1;	
+
+		IF (es_numero_primo(l_numero) = 1) THEN
+			contador_numeros_primos := contador_numeros_primos + 1;
+			v_suma := v_suma + l_numero;
+
+			-- DBMS_OUTPUT.PUT_LINE('Numero primo: '||l_numero);
+		END IF;		
+
+		IF (v_numero = contador_numeros_primos) THEN
+			EXIT;
+		END IF;	
+	END LOOP;
+
+	-- DBMS_OUTPUT.PUT_LINE(l_numero||' + '||contador_numeros_primos||' + '||v_suma);
+
+	RETURN v_suma;
+END;
+/
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE(primeros_numeros_primos(4));
+END;
