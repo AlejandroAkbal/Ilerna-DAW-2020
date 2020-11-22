@@ -55,13 +55,12 @@ END;
 EXECUTE sumar_uno;
 
 /* Parte 3 */
--- TODO: this
 CREATE OR REPLACE PROCEDURE concatenar_cadenas_a_mayusculas
 (cadena1 IN VARCHAR2, cadena2 IN VARCHAR2)
 IS
 	v_concatenacion VARCHAR2(30);
 BEGIN
-	v_concatenacion := cadena1 + cadena2;
+	v_concatenacion := CONCAT(cadena1, cadena2);
 
 	DBMS_OUTPUT.PUT_LINE(v_concatenacion);
 END;
