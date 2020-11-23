@@ -302,3 +302,78 @@ BEGIN
 
 	CLOSE c_emp;
 END;
+
+/* 3.3 */
+
+-- Con For
+CREATE OR REPLACE PROCEDURE apellidos_de_departamento 
+(v_nombre_dept IN DEPT.DNOMBREBRE%TYPE)
+IS
+	v_departamento_existe BOOLEAN := FALSE;
+
+	CURSOR c_emp IS
+		SELECT EMP.APELLIDO FROM EMP
+		RIGHT JOIN
+			DEPT ON DEPT.DEPT_NO = EMP.DEPT_NO
+			WHERE DEPT.DNOMBREBRE = v_nombre_dept;
+BEGIN
+	FOR v_apellido_emp IN c_emp
+	LOOP
+		IF (v_apellido_emp.APELLIDO IS NULL) THEN
+			v_departamento_existe := FALSE;
+		ELSE
+			v_departamento_existe := TRUE;
+
+			DBMS_OUTPUT.PUT_LINE(v_apellido_emp.APELLIDO);
+		END IF;
+	END LOOP;
+
+	IF (v_departamento_existe = FALSE) THEN
+		DBMS_OUTPUT.PUT_LINE('El departamento no existe o no tiene empleados.');
+	END IF;
+END;
+/
+
+EXECUTE apellidos_de_departamento('VENTAS');
+EXECUTE apellidos_de_departamento('NOEXISTE');
+
+-- Sin FOR
+CREATE OR REPLACE PROCEDURE apellidos_de_departamento 
+(v_nombre_dept IN DEPT.DNOMBREBRE%TYPE)
+IS
+	v_departamento_existe BOOLEAN := FALSE;
+
+	v_apellido_emp EMP.APELLIDO%TYPE;
+
+	CURSOR c_emp IS
+		SELECT EMP.APELLIDO FROM EMP
+		RIGHT JOIN
+			DEPT ON DEPT.DEPT_NO = EMP.DEPT_NO
+			WHERE DEPT.DNOMBREBRE = v_nombre_dept;
+BEGIN
+	OPEN c_emp;
+
+	LOOP
+		FETCH c_emp INTO v_apellido_emp;
+
+		IF (v_apellido_emp IS NULL) THEN
+			v_departamento_existe := FALSE;
+		ELSE
+			v_departamento_existe := TRUE;
+
+			DBMS_OUTPUT.PUT_LINE(v_apellido_emp);
+		END IF;
+		
+		EXIT WHEN c_emp%NOTFOUND;
+	END LOOP;
+
+	IF (v_departamento_existe = FALSE) THEN
+		DBMS_OUTPUT.PUT_LINE('El departamento no existe o no tiene empleados.');
+	END IF;
+	
+	CLOSE c_emp;
+END;
+/
+
+EXECUTE apellidos_de_departamento('VENTAS');
+EXECUTE apellidos_de_departamento('NOEXISTE');
