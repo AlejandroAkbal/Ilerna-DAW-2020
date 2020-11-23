@@ -1,5 +1,8 @@
-/* Para generar una salida, debe realizar */
+/* Para generar salida a la consola */
 SET	SERVEROUTPUT ON;
+
+/* Para mostrar errores en la consola */
+SHOW ERRORS;
 
 /* --- Ejercicio 1 --- */
 /* 1.1 */
