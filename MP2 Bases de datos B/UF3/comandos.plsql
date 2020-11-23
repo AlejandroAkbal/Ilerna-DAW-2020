@@ -253,3 +253,25 @@ END;
 BEGIN
 	DBMS_OUTPUT.PUT_LINE(primeros_numeros_primos(4));
 END;
+
+/* --- Ejercicio 3 --- */
+
+/* Parte 1 */
+DECLARE
+	v_dept DEPT%ROWTYPE;
+	CURSOR c_dept IS SELECT * FROM DEPT;
+BEGIN
+	OPEN c_dept;
+
+	DBMS_OUTPUT.PUT_LINE('Nombre | Localidad' || chr(10));
+
+	LOOP
+		FETCH c_dept INTO v_dept;
+
+		DBMS_OUTPUT.PUT_LINE(v_dept.DNOMBREBRE || ' | ' || v_dept.LUGAR);
+
+		EXIT WHEN c_dept%NOTFOUND;
+	END LOOP;
+
+	CLOSE c_dept;
+END;
