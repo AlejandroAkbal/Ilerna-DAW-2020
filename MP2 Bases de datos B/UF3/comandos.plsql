@@ -261,9 +261,9 @@ DECLARE
 	v_dept DEPT%ROWTYPE;
 	CURSOR c_dept IS SELECT * FROM DEPT;
 BEGIN
-	OPEN c_dept;
-
 	DBMS_OUTPUT.PUT_LINE('Nombre | Localidad' || chr(10));
+
+	OPEN c_dept;
 
 	LOOP
 		FETCH c_dept INTO v_dept;
@@ -274,4 +274,31 @@ BEGIN
 	END LOOP;
 
 	CLOSE c_dept;
+END;
+
+/* 3.2 */
+DECLARE
+	v_apellido_emp EMP.APELLIDO%TYPE;
+
+	l_contador NUMBER := 0;
+
+	CURSOR c_emp IS SELECT APELLIDO FROM EMP 
+		INNER JOIN DEPT ON DEPT.DEPT_NO = EMP.DEPT_NO
+		WHERE DEPT.DNOMBREBRE = 'VENTAS';
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('Linea | Apellido' || chr(10));
+
+	OPEN c_emp;
+
+	LOOP
+		FETCH c_emp INTO v_apellido_emp;
+
+		DBMS_OUTPUT.PUT_LINE(l_contador || ' | ' || v_apellido_emp);
+
+		l_contador := l_contador + 1;
+
+		EXIT WHEN c_emp%NOTFOUND;
+	END LOOP;
+
+	CLOSE c_emp;
 END;
