@@ -322,14 +322,14 @@ IS
 			DEPT ON DEPT.DEPT_NO = EMP.DEPT_NO
 			WHERE DEPT.DNOMBREBRE = v_nombre_dept;
 BEGIN
-	FOR v_apellido_emp IN c_emp
+	FOR v_emp_row IN c_emp
 	LOOP
-		IF (v_apellido_emp.APELLIDO IS NULL) THEN
+		IF (v_emp_row.APELLIDO IS NULL) THEN
 			v_departamento_existe := FALSE;
 		ELSE
 			v_departamento_existe := TRUE;
 
-			DBMS_OUTPUT.PUT_LINE(v_apellido_emp.APELLIDO);
+			DBMS_OUTPUT.PUT_LINE(v_emp_row.APELLIDO);
 		END IF;
 	END LOOP;
 
