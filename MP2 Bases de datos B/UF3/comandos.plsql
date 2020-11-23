@@ -2,12 +2,12 @@
 SET	SERVEROUTPUT ON;
 
 /* --- Ejercicio 1 --- */
-/* Parte 1 */
+/* 1.1 */
 CREATE USER Miguel IDENTIFIED BY "1234";
 
 GRANT CREATE SESSION TO Miguel;
 
-/* Parte 2 */
+/* 1.2 */
 CREATE USER Marta;
 
 GRANT CREATE SESSION TO Marta;
@@ -16,10 +16,10 @@ GRANT ALTER ANY TABLE TO Marta;
 
 GRANT DROP ANY TABLE TO Marta;
 
-/* Parte 3 */
+/* 1.3 */
 GRANT SELECT ON alumnos TO Miguel;
 
-/* Parte 4 */
+/* 1.4 */
 ALTER TABLE SYSTEM.alumnos ADD (direccion VARCHAR(20));
 
 ALTER TABLE SYSTEM.alumnos DROP COLUMN password;
@@ -28,7 +28,7 @@ TRUNCATE TABLE SYSTEM.alumnos;
 
 /* --- Ejercicio 2 --- */
 
-/* Parte 1 */
+/* 2.1 */
 CREATE OR REPLACE PROCEDURE ano_actual
 IS 
 	variable_ano_actual VARCHAR2(10);
@@ -41,7 +41,7 @@ END;
 
 EXECUTE ano_actual;
 
-/* Parte 2 */
+/* 2.2 */
 CREATE OR REPLACE PROCEDURE sumar_uno
 IS
 	v_number NUMBER := 0;
@@ -54,7 +54,7 @@ END;
 
 EXECUTE sumar_uno;
 
-/* Parte 3 */
+/* 2.3 */
 CREATE OR REPLACE PROCEDURE concatenar_cadenas_a_mayusculas
 (cadena1 IN VARCHAR2, cadena2 IN VARCHAR2)
 IS
@@ -68,7 +68,7 @@ END;
 
 EXECUTE concatenar_cadenas_a_mayusculas('hola', 'mundo');
 
-/* Parte 4 */
+/* 2.4 */
 DECLARE
 	v_codigo_empleado NUMBER := 7369;
 	v_salario_actual NUMBER;
@@ -82,7 +82,7 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('Salario actual: ' || v_salario_actual || chr(10) || 'Tercio de salario: ' || v_tercio_salario_actual);
 END;
 
-/* Parte 5 */
+/* 2.5 */
 CREATE OR REPLACE FUNCTION dia_de_la_semana 
 (v_dia_number IN NUMBER) 
 RETURN VARCHAR2 
@@ -119,7 +119,7 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(dia_de_la_semana(0));
 END;
 
-/* Parte 6 */
+/* 2.6 */
 CREATE OR REPLACE FUNCTION dia_de_la_semana 
 (v_dia_number IN NUMBER) 
 RETURN VARCHAR2 
@@ -157,7 +157,7 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(dia_de_la_semana(2));
 END;
 
-/* Parte 7 */
+/* 2.7 */
 CREATE OR REPLACE FUNCTION numero_mas_grande 
 (v_numero_1 IN NUMBER, v_numero_2 IN NUMBER, v_numero_3 IN NUMBER)
 RETURN NUMBER 
@@ -174,7 +174,7 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(numero_mas_grande(1,2,3));
 END;
 
-/* Parte 8 */
+/* 2.8 */
 CREATE OR REPLACE PROCEDURE suma_numeros_enteros_por_repeticion 
 (v_numero_de_repeticiones IN NUMBER)
 IS
@@ -191,7 +191,7 @@ END;
 
 EXECUTE suma_numeros_enteros_por_repeticion(5);
 
-/* Parte 9 */
+/* 2.9 */
 CREATE OR REPLACE FUNCTION es_numero_primo 
 (v_numero IN NUMBER)
 RETURN NUMBER 
@@ -220,7 +220,7 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE(es_numero_primo(29));
 END;
 
-/* Parte 10 */
+/* 2.10 */
 CREATE OR REPLACE FUNCTION primeros_numeros_primos 
 (v_numero IN NUMBER)
 RETURN NUMBER 
@@ -256,7 +256,7 @@ END;
 
 /* --- Ejercicio 3 --- */
 
-/* Parte 1 */
+/* 3.1 */
 DECLARE
 	v_dept DEPT%ROWTYPE;
 	CURSOR c_dept IS SELECT * FROM DEPT;
