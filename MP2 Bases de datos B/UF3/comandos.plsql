@@ -382,3 +382,52 @@ END;
 
 EXECUTE apellidos_de_departamento('VENTAS');
 EXECUTE apellidos_de_departamento('NOEXISTE');
+
+/* 3.4 */
+CREATE OR REPLACE FUNCTION empleados_que_cobran_comision_por_departamento 
+(v_dept IN DEPT.DNOMBREBRE%TYPE)
+RETURN NUMBER
+IS
+	v_resultado NUMBER := NULL;
+
+	CURSOR c_emp IS
+		SELECT EMP.COMISION, EMP.DEPT_NO FROM EMP
+		RIGHT JOIN
+			DEPT ON DEPT.DEPT_NO = EMP.DEPT_NO
+			WHERE DEPT.DNOMBREBRE = v_dept;
+BEGIN
+	FOR v_emp_row IN c_emp
+	LOOP
+		-- DBMS_OUTPUT.PUT_LINE('Row: '||v_emp_row.COMISION);
+
+		-- Departamento existe
+		IF (v_emp_row.DEPT_NO IS NOT NULL) THEN 
+		
+			-- Asginar valor de 0 a resultado
+			IF (v_resultado IS NULL) THEN
+				v_resultado := 0;
+			END IF;
+
+			-- Sumar si el valor es mayor a 0
+			IF (v_emp_row.COMISION > 0) THEN
+			v_resultado := v_resultado + 1;
+			END IF;
+
+		END IF;
+
+	END LOOP;
+	
+	-- DBMS_OUTPUT.PUT_LINE('Valor: '||v_resultado);
+
+	RETURN v_resultado;
+END;
+/
+
+
+SHOW ERRORS;
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('Valor: '||empleados_que_cobran_comision_por_departamento('VENTAS'));
+	DBMS_OUTPUT.PUT_LINE('Valor: '||empleados_que_cobran_comision_por_departamento('INVESTIGACION'));
+	DBMS_OUTPUT.PUT_LINE('Valor: '||empleados_que_cobran_comision_por_departamento('NOEXISTE'));
+END;
