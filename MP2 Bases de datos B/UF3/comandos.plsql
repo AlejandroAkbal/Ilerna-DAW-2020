@@ -423,11 +423,48 @@ BEGIN
 END;
 /
 
-
-SHOW ERRORS;
-
 BEGIN
 	DBMS_OUTPUT.PUT_LINE('Valor: '||empleados_que_cobran_comision_por_departamento('VENTAS'));
 	DBMS_OUTPUT.PUT_LINE('Valor: '||empleados_que_cobran_comision_por_departamento('INVESTIGACION'));
 	DBMS_OUTPUT.PUT_LINE('Valor: '||empleados_que_cobran_comision_por_departamento('NOEXISTE'));
 END;
+
+
+/* --- Ejercicio 4 --- */
+
+DROP TABLE auditaemple CASCADE CONSTRAINTS;
+
+/* 4.1 */
+-- Tabla
+CREATE TABLE auditaemple (
+	id_cambio NUMBER(5) PRIMARY KEY,
+	descripcion_cambio VARCHAR2(100),
+	fecha_cambio DATE
+)
+
+-- Trigger
+CREATE OR REPLACE TRIGGER auditasueldo 
+	AFTER UPDATE OF salario ON emp 
+	FOR EACH ROW 
+DECLARE 
+	v_id_cambio_mas_alto auditaemple.id_cambio%TYPE;
+BEGIN
+	SELECT MAX(id_cambio) 
+		INTO v_id_cambio_mas_alto 
+		FROM auditaemple;
+
+	IF v_id_cambio_mas_alto IS NULL THEN
+		v_id_cambio_mas_alto := 1;
+	ELSE
+		v_id_cambio_mas_alto := v_id_cambio_mas_alto + 1;
+	END IF;
+
+	INSERT INTO auditaemple 
+		VALUES (
+			v_id_cambio_mas_alto,
+			'El salario del empleado '||:OLD.emp_no||' antes era de '||:OLD.salario||' y ahora sera '||:NEW.salario,
+			SYSDATE
+		);
+END;
+
+SHOW ERRORS;
