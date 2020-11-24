@@ -547,6 +547,61 @@ INSERT INTO emp (
 SELECT * FROM EMP WHERE EMP_NO = 9999;
 SELECT * FROM auditaemple;
 
+/* 4.3 */
+CREATE OR REPLACE TRIGGER auditaemple2 
+	AFTER UPDATE OF SALARIO ON emp 
+	FOR EACH ROW 
+DECLARE 
+	v_id_mas_alto auditaemple.id_cambio%TYPE;
+BEGIN
+	SELECT MAX(id_cambio) 
+		INTO v_id_mas_alto 
+		FROM auditaemple;
+
+	IF v_id_mas_alto IS NULL THEN
+		v_id_mas_alto := 1;
+	ELSE
+		v_id_mas_alto := v_id_mas_alto + 1;
+	END IF;
+
+	IF (:NEW.SALARIO > (:OLD.SALARIO * 1.1)) THEN
+
+		INSERT INTO auditaemple 
+			VALUES (
+				v_id_mas_alto,
+				'El salario del empleado '||:OLD.emp_no||' antes era de '||:OLD.salario||' y ahora sera '||:NEW.salario,
+				SYSDATE
+			);
+
+	END IF;
+END;
+
+-- Ejecucion y pruebas
+INSERT INTO emp (
+	EMP_NO,
+	APELLIDO,
+	OFICIO,	
+	JEFE,
+	FECHA_ALTA,	
+	SALARIO,	
+	COMISION,	
+	DEPT_NO
+) VALUES (
+	9999,
+	'LA PERA',
+	'VENDEDOR',
+	7902,
+	SYSDATE,
+	42069,
+	NULL,
+	10
+);
+
+UPDATE EMP SET SALARIO = 10000 WHERE EMP_NO = 9999;
+UPDATE EMP SET SALARIO = 20000 WHERE EMP_NO = 9999;
+
+SELECT * FROM EMP WHERE EMP_NO = 9999;
+SELECT * FROM auditaemple;
 
 SHOW ERRORS;
 
