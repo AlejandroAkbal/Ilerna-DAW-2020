@@ -432,7 +432,11 @@ END;
 
 /* --- Ejercicio 4 --- */
 
+-- Ejecutar antes de hacer las pruebas
 DROP TABLE auditaemple CASCADE CONSTRAINTS;
+DROP TRIGGER auditaemple;
+
+DELETE FROM EMP WHERE EMP_NO >= 9000;
 
 /* 4.1 */
 -- Tabla
@@ -542,6 +546,7 @@ INSERT INTO emp (
 
 SELECT * FROM EMP WHERE EMP_NO = 9999;
 SELECT * FROM auditaemple;
+
 
 SHOW ERRORS;
 
