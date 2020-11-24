@@ -434,7 +434,9 @@ END;
 
 -- Ejecutar antes de hacer las pruebas
 DROP TABLE auditaemple CASCADE CONSTRAINTS;
+DROP TRIGGER auditasueldo;
 DROP TRIGGER auditaemple;
+DROP TRIGGER auditaemple2;
 
 DELETE FROM EMP WHERE EMP_NO >= 9000;
 
