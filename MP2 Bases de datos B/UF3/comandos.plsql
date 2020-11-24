@@ -467,4 +467,30 @@ BEGIN
 		);
 END;
 
+/* 4.2 */
+CREATE OR REPLACE TRIGGER auditaemple 
+	AFTER INSERT ON emp 
+	FOR EACH ROW 
+DECLARE 
+	v_id_mas_alto auditaemple.id_cambio%TYPE;
+BEGIN
+	SELECT MAX(id_cambio) 
+		INTO v_id_mas_alto 
+		FROM auditaemple;
+
+	IF v_id_mas_alto IS NULL THEN
+		v_id_mas_alto := 1;
+	ELSE
+		v_id_mas_alto := v_id_mas_alto + 1;
+	END IF;
+
+	INSERT INTO auditaemple 
+		VALUES (
+			v_id_mas_alto,
+			'Nuevo empleado con codigo '||:NEW.emp_no,
+			SYSDATE
+		);
+END;
+
 SHOW ERRORS;
+
