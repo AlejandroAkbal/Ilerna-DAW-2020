@@ -11,7 +11,7 @@ CREATE USER Miguel IDENTIFIED BY "1234";
 GRANT CREATE SESSION TO Miguel;
 
 /* 1.2 */
-CREATE USER Marta;
+CREATE USER Marta IDENTIFIED BY "1234";
 
 GRANT CREATE SESSION TO Marta;
 
@@ -73,7 +73,7 @@ EXECUTE concatenar_cadenas_a_mayusculas('hola', 'mundo');
 
 /* 2.4 */
 DECLARE
-	v_codigo_empleado NUMBER := 7369;
+	v_codigo_empleado NUMBER := &CODIGO_EMPLEADO;
 	v_salario_actual NUMBER;
 	v_tercio_salario_actual NUMBER;
 
