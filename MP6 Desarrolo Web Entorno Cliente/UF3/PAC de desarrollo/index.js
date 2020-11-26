@@ -21,10 +21,13 @@ class SlotMachine {
     'zanahoria.png',
   ];
 
-  constructor(playElement, stopElement, slotsElements) {
+  listElement = undefined;
+
+  constructor(playElement, stopElement, slotsElements, listElement) {
     this.initialize();
 
     this.slotsElements = slotsElements;
+    this.listElement = listElement;
 
     playElement.addEventListener('click', this.play.bind(this));
     stopElement.addEventListener('click', this.stop.bind(this));
@@ -116,8 +119,14 @@ class SlotMachine {
   stop() {
     alert(`Monedas: ${this.coins}`);
 
+    for (historyObject of this.playHistory) {
+      // TODO: create table dinamically
+    }
+
+    this.listElement.classList.toggle('hidden');
+
     // TODO: is this "Mostrar en formato lista el historial de monedas ganadas y perdidas en cada tirada." ?
-    console.log(this.playHistory);
+    // console.log(this.playHistory);
   }
 }
 
@@ -130,4 +139,6 @@ const slotsElements = [
   document.getElementById('slot-3'),
 ];
 
-new SlotMachine(playElement, stopElement, slotsElements);
+const listElement = document.getElementById('list');
+
+new SlotMachine(playElement, stopElement, slotsElements, listElement);
