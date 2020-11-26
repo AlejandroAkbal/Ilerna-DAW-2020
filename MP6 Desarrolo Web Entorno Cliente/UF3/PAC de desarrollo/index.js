@@ -1,18 +1,17 @@
-(() => {
-  //#region Monedas
-  let coins;
+'use strict';
 
-  do {
-    coins = parseInt(prompt('Con cuantas monedas quieres jugar', 50));
-  } while (isNaN(coins) || coins < 1);
+function getRandomIntegerByMax(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
-  // coins = 50;
+class SlotMachine {
+  coins = undefined;
 
-  //#endregion
+  playHistory = [];
 
-  //#region Imagen aleatoria
+  slotsElements = undefined;
 
-  const imageArray = [
+  imageArray = [
     'aguacate.png',
     'ajo.png',
     'cebolla.png',
@@ -22,50 +21,49 @@
     'zanahoria.png',
   ];
 
-  function getRandomIntegerByMax(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+  constructor(playElement, stopElement, slotsElements) {
+    this.initialize();
+
+    this.slotsElements = slotsElements;
+
+    playElement.addEventListener('click', this.play.bind(this));
+    stopElement.addEventListener('click', this.stop.bind(this));
   }
 
-  function getRandomImage() {
-    const randomInteger = getRandomIntegerByMax(imageArray.length);
-
-    return imageArray[randomInteger];
+  initialize() {
+    do {
+      this.coins = parseInt(prompt('Con cuantas monedas quieres jugar', 50));
+    } while (isNaN(this.coins) || this.coins < 1);
   }
 
-  //#endregion
+  getRandomImage() {
+    const randomInteger = getRandomIntegerByMax(this.imageArray.length);
 
-  const playHistory = [];
+    return this.imageArray[randomInteger];
+  }
 
-  const slotsElements = [
-    document.getElementById('slot-1'),
-    document.getElementById('slot-2'),
-    document.getElementById('slot-3'),
-  ];
-
-  //#region Functions
-
-  function playSlotMachine() {
-    let coinsToWin = 0;
-    let coinsToLose = 0;
-
-    if (coins < 1) {
+  play() {
+    if (this.coins < 1) {
       const message = 'No tienes suficientes monedas';
 
       alert(message);
       throw new Error(message);
     }
 
+    let coinsToWin = 0;
+    let coinsToLose = 0;
+
     // Remove one coin by playing
     coinsToLose++;
 
     const randomSelectedImages = [
-      getRandomImage(),
-      getRandomImage(),
-      getRandomImage(),
+      this.getRandomImage(),
+      this.getRandomImage(),
+      this.getRandomImage(),
     ];
 
     // Update IMG elements with the random images
-    for (const [index, slotElement] of slotsElements.entries()) {
+    for (const [index, slotElement] of this.slotsElements.entries()) {
       slotElement.src = `./media/img/${randomSelectedImages[index]}`;
     }
 
@@ -105,25 +103,31 @@
 
     console.log(coinsToWin);
 
-    coins += coinsToWin - coinsToLose;
+    this.coins += coinsToWin - coinsToLose;
 
-    playHistory.push({
+    this.playHistory.push({
       coinsToWin,
       coinsToLose,
       coinResult: coinsToWin - coinsToLose,
-      coinsTotal: coins,
+      coinsTotal: this.coins,
     });
   }
 
-  function stopSlotMachine() {
-    alert(`Monedas: ${coins}`);
+  stop() {
+    alert(`Monedas: ${this.coins}`);
 
     // TODO: is this "Mostrar en formato lista el historial de monedas ganadas y perdidas en cada tirada." ?
-    console.log(playHistory);
+    console.log(this.playHistory);
   }
+}
 
-  //#endregion
+const playElement = document.getElementById('play');
+const stopElement = document.getElementById('stop');
 
-  document.getElementById('play').addEventListener('click', playSlotMachine);
-  document.getElementById('stop').addEventListener('click', stopSlotMachine);
-})();
+const slotsElements = [
+  document.getElementById('slot-1'),
+  document.getElementById('slot-2'),
+  document.getElementById('slot-3'),
+];
+
+new SlotMachine(playElement, stopElement, slotsElements);
