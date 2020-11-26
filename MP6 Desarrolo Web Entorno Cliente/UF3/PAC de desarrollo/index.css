@@ -5,6 +5,10 @@ img {
   height: auto;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Specific */
 
 .slot-machine {
@@ -23,6 +27,11 @@ img {
 }
 
 .slot-machine__buttons {
+  display: grid;
+  place-items: center;
+}
+
+.slot-machine__list {
   display: grid;
   place-items: center;
 }
