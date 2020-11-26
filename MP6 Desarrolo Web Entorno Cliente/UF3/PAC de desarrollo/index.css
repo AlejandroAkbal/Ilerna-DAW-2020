@@ -1,0 +1,23 @@
+/* Generics */
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Specific */
+
+.slot-machine {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  max-height: 90vh;
+}
+
+@media screen and (max-width: 600px) {
+  .slot-machine {
+    grid-template-columns: 1fr;
+  }
+}
