@@ -119,14 +119,24 @@ class SlotMachine {
   stop() {
     alert(`Monedas: ${this.coins}`);
 
-    for (historyObject of this.playHistory) {
-      // TODO: create table dinamically
+    const newTBody = document.createElement('tbody');
+    const oldTBody = listElement.getElementsByTagName('tbody')[0];
+
+    for (const [index, historyObject] of this.playHistory.entries()) {
+      const row = newTBody.insertRow(-1);
+
+      const cell1 = row.insertCell(0);
+      const cell2 = row.insertCell(1);
+      const cell3 = row.insertCell(2);
+
+      cell1.textContent = index;
+      cell2.textContent = historyObject.coinsToWin;
+      cell3.textContent = historyObject.coinsToLose;
     }
 
-    this.listElement.classList.toggle('hidden');
+    this.listElement.replaceChild(newTBody, oldTBody);
 
-    // TODO: is this "Mostrar en formato lista el historial de monedas ganadas y perdidas en cada tirada." ?
-    // console.log(this.playHistory);
+    this.listElement.classList.remove('hidden');
   }
 }
 
