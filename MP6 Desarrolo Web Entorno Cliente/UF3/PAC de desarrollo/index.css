@@ -1,8 +1,18 @@
 /* Generics */
 
-img {
-  width: 100%;
-  height: auto;
+body {
+  background: #f0f0f0;
+}
+
+button {
+  padding: 0.5em;
+
+  color: #000;
+
+  background: #fafafa;
+
+  border-color: #5f5f5f;
+  border-width: 1px;
 }
 
 .hidden {
@@ -17,6 +27,7 @@ img {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 
+  height: 90vh;
   max-height: 90vh;
 }
 
@@ -26,9 +37,21 @@ img {
   }
 }
 
+.slot-machine > img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .slot-machine > img {
+    width: 40%;
+  }
+}
+
 .slot-machine__buttons {
   display: grid;
   place-items: center;
+  gap: 0.25em;
 }
 
 .slot-machine__list {
