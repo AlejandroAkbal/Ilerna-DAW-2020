@@ -3,7 +3,17 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_DvxAIDTwEeu6DZTzcdzH1Q">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_k2qIgDTwEeu6DZTzcdzH1Q" name="cliente"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_k2qIgDTwEeu6DZTzcdzH1Q" name="cliente">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5VqUDerEeueScN8N5TTzg" name="dni" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5e0QDerEeueScN8N5TTzg" name="apellidos" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5e0QTerEeueScN8N5TTzg" name="nombre" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_3ymJQDVMEeuIc8_1vLb7Cg" name="mercancia">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_H5EysTVPEeuIc8_1vLb7Cg" type="_5qp3EDVMEeuIc8_1vLb7Cg"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_YOYXwjVQEeuIc8_1vLb7Cg" type="_9QnRIDVMEeuIc8_1vLb7Cg"/>
@@ -17,6 +27,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_-uq6wDYhEeuWg8q3Z8p0Rg" name="valor" visibility="public" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_WUzecDeqEeueScN8N5TTzg" type="_vGD5EDYfEeuWg8q3Z8p0Rg" aggregation="composite" association="_WUptcDeqEeueScN8N5TTzg"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_5qp3EDVMEeuIc8_1vLb7Cg" name="almacen">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_bZMRczVREeuIc8_1vLb7Cg" type="_Cn_lgDVNEeuIc8_1vLb7Cg"/>
@@ -168,6 +179,14 @@
     </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_2E9IYDYgEeuWg8q3Z8p0Rg" client="_DoLKYDTwEeu6DZTzcdzH1Q" supplier="_sHWPwDYgEeuWg8q3Z8p0Rg"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WUptcDeqEeueScN8N5TTzg" memberEnd="_WUzecDeqEeueScN8N5TTzg _WUzeczeqEeueScN8N5TTzg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WUptcTeqEeueScN8N5TTzg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WUptcjeqEeueScN8N5TTzg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_WUzeczeqEeueScN8N5TTzg" type="_3ymJQDVMEeuIc8_1vLb7Cg" association="_WUptcDeqEeueScN8N5TTzg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eTLqQDeqEeueScN8N5TTzg" value="*"/>
+    </ownedEnd>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_19GnQDVMEeuIc8_1vLb7Cg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_19IccDVMEeuIc8_1vLb7Cg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
