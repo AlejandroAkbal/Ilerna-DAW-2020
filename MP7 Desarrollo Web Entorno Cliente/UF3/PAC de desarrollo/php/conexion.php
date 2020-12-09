@@ -9,7 +9,7 @@ $con = new mysqli($host, $user, $pass, $bd);
 if ($con->connect_errno) {
     $message = "Connection to database failed.";
     echo $message;
-    exit($message);
+    die($message);
 }
 
 $con->set_charset("UTF8");
