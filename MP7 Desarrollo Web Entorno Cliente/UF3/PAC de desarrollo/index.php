@@ -13,12 +13,12 @@
     <h1>Actividad de desarrollo (UF3) </h1>
 
     <?php
-    include(dirname(__DIR__) . "/PAC de desarrollo/php/cabecera.php");
+    require_once(dirname(__DIR__) . "/PAC de desarrollo/php/cabecera.php");
     ?>
 
 
     <?php
-    $con = include(dirname(__DIR__) . "/PAC de desarrollo/php/conexion.php");
+    $con = require_once(dirname(__DIR__) . "/PAC de desarrollo/php/conexion.php");
     ?>
 
 </body>

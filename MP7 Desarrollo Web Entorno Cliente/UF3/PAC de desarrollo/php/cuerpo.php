@@ -1,6 +1,6 @@
 <?php
 
-$dbconnect = require('conexion.php');
+$dbconnect = require_once('conexion.php');
 
 $sql = "SELECT * FROM noticias ORDER BY hora_creacion DESC LIMIT 5;";
 

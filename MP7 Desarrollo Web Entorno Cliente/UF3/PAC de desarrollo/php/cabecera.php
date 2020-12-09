@@ -13,7 +13,7 @@
             <a href="/php/form_usuario.php">Crear usuario</a>
         </li>
         <li>
-            <a href="/php/form_noticia.php">Crear noticia</a>
+            <a href="/php/form_noticias.php">Crear noticia</a>
         </li>
     </ul>
 </nav>
