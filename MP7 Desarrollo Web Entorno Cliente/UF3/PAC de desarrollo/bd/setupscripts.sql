@@ -40,5 +40,5 @@ INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
 )
 
 INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
-	'Como comer gambas al ajillo3: especial halloween', 'Pues muy buena pregunta mi compadre', 'Juan y dos cuartos', 3
+	'Como comer gambas al ajillo 3: especial halloween', 'Pues muy buena pregunta mi compadre', 'Juan y dos cuartos', 3
 )
