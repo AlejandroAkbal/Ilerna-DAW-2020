@@ -28,3 +28,17 @@ CREATE TABLE IF NOT EXISTS noticias (
 	likes INT NOT NULL DEFAULT 0
 );
 
+
+-- Datos --
+
+INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
+	'Como comer gambas al ajillo', 'Pues muy buena pregunta mi compadre', 'Juan', 5
+)
+
+INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
+	'Como comer gambas al ajillo 2: especial navidad', 'Pues muy buena pregunta mi compadre', 'Juan y medio', 7
+)
+
+INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
+	'Como comer gambas al ajillo3: especial halloween', 'Pues muy buena pregunta mi compadre', 'Juan y dos cuartos', 3
+)
