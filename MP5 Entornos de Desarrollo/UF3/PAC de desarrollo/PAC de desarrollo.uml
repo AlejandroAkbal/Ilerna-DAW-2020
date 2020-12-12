@@ -4,13 +4,16 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Class" xmi:id="_k2qIgDTwEeu6DZTzcdzH1Q" name="cliente">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5VqUDerEeueScN8N5TTzg" name="dni" visibility="protected">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5VqUDerEeueScN8N5TTzg" name="dni" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5e0QDerEeueScN8N5TTzg" name="apellidos" visibility="protected">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5e0QDerEeueScN8N5TTzg" name="apellidos" visibility="public">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5e0QTerEeueScN8N5TTzg" name="nombre" visibility="protected">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_t5e0QTerEeueScN8N5TTzg" name="nombre" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ExMUMDyAEeuxU6XA-qOMSA" name="direccion" visibility="public" isUnique="false">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
@@ -58,6 +61,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_k6HQMDYkEeuWg8q3Z8p0Rg" name="id_centro_comercial" visibility="public" isDerived="true">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Dw2cEDyBEeuxU6XA-qOMSA" name="calcular_total_de_vendedores"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_G0RYsDVNEeuIc8_1vLb7Cg" name="vendedor">
     <generalization xmi:type="uml:Generalization" xmi:id="_RXkFUDYeEeuWg8q3Z8p0Rg" general="_H-DrQDVNEeuIc8_1vLb7Cg"/>
@@ -84,6 +88,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_Oo4KIDYhEeuWg8q3Z8p0Rg" name="apellidos" visibility="protected">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_DLJG8DyBEeuxU6XA-qOMSA" name="calcular_salario" visibility="protected"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_wJ31oDVSEeuIc8_1vLb7Cg" memberEnd="_wJ31ozVSEeuIc8_1vLb7Cg _wJ31pDVSEeuIc8_1vLb7Cg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wJ31oTVSEeuIc8_1vLb7Cg" source="org.eclipse.papyrus">
@@ -168,6 +173,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JOOC0TYiEeuWg8q3Z8p0Rg"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JOOC0jYiEeuWg8q3Z8p0Rg" value="*"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_zRHvsDx_EeuxU6XA-qOMSA" name="calcular_total"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_sHWPwDYgEeuWg8q3Z8p0Rg" memberEnd="_sHfZsjYgEeuWg8q3Z8p0Rg _sHfZszYgEeuWg8q3Z8p0Rg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sHfZsDYgEeuWg8q3Z8p0Rg" source="org.eclipse.papyrus">
