@@ -1,13 +1,16 @@
 <?php
-class DB_Functions {
+
+abstract class DB_Factory {
   protected $db_connection;
 
-  public function DB_Functions($db_conn) {
+  public function DB_Factory($db_conn) {
     $this->db_connection = $db_conn;
   }
+}
 
+class DB_Functions extends DB_Factory {
   public function run_sql($sql) {
-    $query = mysqli_query($this->db_connection, $sql);
+    $query = $this->db_connection->query($sql);
 
     if (!$query) {
         die(mysqli_error($query));
