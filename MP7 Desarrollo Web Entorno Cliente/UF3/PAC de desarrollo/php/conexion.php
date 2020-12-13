@@ -18,8 +18,8 @@ class DB_Connect {
         $db_conn = new mysqli($this->host, $this->user, $this->password, $this->database);
 
         if ($db_conn->connect_errno) {
-            $message = "Connection to database failed.";
-            echo $message;
+            $message = "Connection to database failed: {$db_conn->connect_error}";
+            
             die($message);
         }
 

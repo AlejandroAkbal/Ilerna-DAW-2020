@@ -13,7 +13,9 @@ class DB_Functions extends DB_Factory {
     $query = $this->db_connection->query($sql);
 
     if (!$query) {
-        die(mysqli_error($query));
+      $message = "Query to database failed: {$this->db_connection->error}";
+            
+      die($message);
     }
 
     return $query;
