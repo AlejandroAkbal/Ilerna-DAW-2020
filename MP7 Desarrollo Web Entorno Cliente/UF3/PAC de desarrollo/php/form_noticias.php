@@ -1,4 +1,4 @@
-<form id="form_usuario" action="#" method="post">
+<form id="form_usuario" action="" method="post">
 
     <label for="titulo">Titulo</label>
     <input type="text" name="titulo" id="titulo" maxlength="60" required />
