@@ -1,14 +1,18 @@
 <?php
+// Imports
+require_once('conexion.php');
+require_once('funciones_bd.php');
 
-$dbconnect = require_once('conexion.php');
+$db_connect = new DB_Connect();
+$db_connect->create_connection();
+$db_connection = $db_connect->get_connection();
 
+$db_functions = new DB_Functions($db_connection);
+
+// Code
 $sql = "SELECT * FROM usuarios;";
 
-$query = mysqli_query($dbconnect, $sql);
-
-if (!$query) {
-    die(mysqli_error($dbconnect));
-}
+$query = $db_functions->run_sql($sql);
 
 if (!(mysqli_num_rows($query) > 0)) {
     die("No records matching your query were found.");
