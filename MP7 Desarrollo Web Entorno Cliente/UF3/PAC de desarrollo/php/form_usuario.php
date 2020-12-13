@@ -4,7 +4,7 @@
     <input type="text" name="nombre" id="nombre" maxlength="20" required />
 
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" maxlength="20" required />
+    <input type="password" name="contraseña" id="contraseña" maxlength="20" required />
 
     <label for="email">Email</label>
     <input type="email" name="email" id="email" maxlength="20" />
