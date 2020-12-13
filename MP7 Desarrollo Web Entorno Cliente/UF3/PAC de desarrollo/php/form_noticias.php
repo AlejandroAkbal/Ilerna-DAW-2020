@@ -9,7 +9,7 @@
     <label for="autor">Autor</label>
     <input type="text" name="autor" id="autor" maxlength="20" required />
 
-    <label for="hora_creacion">Hora de creacion</label>
+    <label for="hora_creacion">Datetime de creacion</label>
     <input type="datetime" name="hora_creacion" id="hora_creacion" />
 
     <label for="likes">Likes</label>
