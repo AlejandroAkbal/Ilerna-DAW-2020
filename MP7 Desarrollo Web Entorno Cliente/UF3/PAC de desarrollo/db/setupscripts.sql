@@ -32,15 +32,15 @@ CREATE TABLE IF NOT EXISTS noticias (
 -- Datos --
 
 INSERT INTO usuarios(nombre, contraseña, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES (
-	'Juan', 'password', 20, '2000-09-12', 'Las gambas, 5, Teruel', 69420, 'Teruel', 'macho'
+	'Juan', 'password', 20, '2000-09-12', 'Las gambas, 5, Teruel', 69420, 'Teruel', 'hombre'
 )
 
 INSERT INTO usuarios(nombre, contraseña, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES (
-	'Juan y medio', 'password', 20, '2000-09-10', 'Las gambas, 7, Teruel', 69423, 'Teruel', 'macho'
+	'Juan y medio', 'password', 20, '2000-09-10', 'Las gambas, 7, Teruel', 69423, 'Teruel', 'hombre'
 )
 
 INSERT INTO usuarios(nombre, contraseña, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES (
-	'Juan y dos cuartos', 'password', 20, '2000-09-11', 'Las gambas, 15, Teruel', 69421, 'Teruel', 'hembra'
+	'Juan y dos cuartos', 'password', 20, '2000-09-11', 'Las gambas, 15, Teruel', 69421, 'Teruel', 'mujer'
 )
 
 INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (

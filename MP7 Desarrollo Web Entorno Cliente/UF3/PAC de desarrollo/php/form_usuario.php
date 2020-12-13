@@ -26,8 +26,8 @@
 
     <label for="genero">Genero</label>
     <select name="genero" id="genero" required>
-        <option value="macho">Macho</option>
-        <option value="hembra">Hembra</option>
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
     </select>
 
     <input type="reset" value="Resetear" />
