@@ -26,3 +26,58 @@
         flex-direction: column;
     }
 </style>
+
+<?php
+// Imports
+require_once('conexion.php');
+require_once('funciones_bd.php');
+
+$db_connect = new DB_Connect();
+$db_connect->create_connection();
+$db_connection = $db_connect->get_connection();
+
+$db_functions = new DB_Functions($db_connection);
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $titulo = $contenido = $autor = $hora_creacion = $likes = "";
+    $error_message_required_form_data = "Please, enter data on all required forms.";
+
+    if (!empty($_POST["titulo"])) {
+      $titulo = "\"{$_POST["titulo"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["contenido"])) {
+      $contenido = "\"{$_POST["contenido"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["autor"])) {
+      $autor = "\"{$_POST["autor"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["hora_creacion"])) {
+      $hora_creacion = "\"{$_POST["hora_creacion"]}\"";
+    } else {
+        $hora_creacion = "DEFAULT";
+    }
+
+    if (!empty($_POST["likes"])) {
+      $likes = "\"{$_POST["likes"]}\"";
+    } else {
+        $likes = "DEFAULT";
+    }
+    
+    // Code
+    $sql = "INSERT INTO noticias (titulo, contenido, autor, hora_creacion, likes) VALUES ({$titulo}, {$contenido}, {$autor}, {$hora_creacion}, {$likes});";
+
+    $query = $db_functions->run_sql($sql);
+
+    echo "Data successfully sent.";
+}
+?>

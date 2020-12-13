@@ -40,3 +40,82 @@
         flex-direction: column;
     }
 </style>
+
+<?php
+// Imports
+require_once('conexion.php');
+require_once('funciones_bd.php');
+
+$db_connect = new DB_Connect();
+$db_connect->create_connection();
+$db_connection = $db_connect->get_connection();
+
+$db_functions = new DB_Functions($db_connection);
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $contraseña = $email = $edad = $fecha_nacimiento = $direccion = $codigo_postal = $provincia = $genero = "";
+    $error_message_required_form_data = "Please, enter data on all required forms.";
+
+    if (!empty($_POST["nombre"])) {
+      $nombre = "\"{$_POST["nombre"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["contraseña"])) {
+      $contraseña = "\"{$_POST["contraseña"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["email"])) {
+      $email = "\"{$_POST["email"]}\"";
+    } else {
+        $email = "NULL";
+    }
+
+    if (!empty($_POST["edad"])) {
+      $edad = "\"{$_POST["edad"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["fecha_nacimiento"])) {
+      $fecha_nacimiento = "\"{$_POST["fecha_nacimiento"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["direccion"])) {
+      $direccion = "\"{$_POST["direccion"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["codigo_postal"])) {
+      $codigo_postal = "\"{$_POST["codigo_postal"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["provincia"])) {
+      $provincia = "\"{$_POST["provincia"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+
+    if (!empty($_POST["genero"])) {
+      $genero = "\"{$_POST["genero"]}\"";
+    } else {
+        die($error_message_required_form_data);
+    }
+    
+    // Code
+    $sql = "INSERT INTO usuarios (nombre, contraseña, email, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES ({$nombre}, {$contraseña}, {$email}, {$edad}, {$fecha_nacimiento}, {$direccion}, {$codigo_postal}, {$provincia}, {$genero});";
+
+    $query = $db_functions->run_sql($sql);
+
+    echo "Data successfully sent.";
+}
+?>
