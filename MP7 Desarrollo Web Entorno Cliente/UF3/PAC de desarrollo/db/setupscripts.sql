@@ -33,24 +33,24 @@ CREATE TABLE IF NOT EXISTS noticias (
 
 INSERT INTO usuarios(nombre, contraseña, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES (
 	'Juan', 'password', 20, '2000-09-12', 'Las gambas, 5, Teruel', 69420, 'Teruel', 'hombre'
-)
+);
 
 INSERT INTO usuarios(nombre, contraseña, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES (
 	'Juan y medio', 'password', 20, '2000-09-10', 'Las gambas, 7, Teruel', 69423, 'Teruel', 'hombre'
-)
+);
 
 INSERT INTO usuarios(nombre, contraseña, edad, fecha_nacimiento, direccion, codigo_postal, provincia, genero) VALUES (
 	'Juan y dos cuartos', 'password', 20, '2000-09-11', 'Las gambas, 15, Teruel', 69421, 'Teruel', 'mujer'
-)
+);
 
 INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
 	'Como comer gambas al ajillo', 'Pues muy buena pregunta mi compadre', 'Juan', 5
-)
+);
 
 INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
 	'Como comer gambas al ajillo 2: especial navidad', 'Pues muy buena pregunta mi compadre', 'Juan y medio', 7
-)
+);
 
 INSERT INTO noticias(titulo, contenido, autor, likes) VALUES (
 	'Como comer gambas al ajillo 3: especial halloween', 'Pues muy buena pregunta mi compadre', 'Juan y dos cuartos', 3
-)
+);
