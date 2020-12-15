@@ -1,4 +1,16 @@
+<style>
+    .navbar>ul {
+        list-style-type: none;
+
+        display: flex;
+        gap: 10px;
+    }
+</style>
+
 <nav class="navbar">
+
+    <h1>Actividad de desarrollo (UF3)</h1>
+
     <ul>
         <li>
             <a href="/php/cuerpo.php">Inicio</a>
@@ -17,12 +29,3 @@
         </li>
     </ul>
 </nav>
-
-<style>
-    .navbar>ul {
-        list-style-type: none;
-
-        display: flex;
-        gap: 10px;
-    }
-</style>
