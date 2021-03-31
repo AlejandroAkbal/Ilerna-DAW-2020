@@ -2,6 +2,7 @@
 
 const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
+const outputTable = document.getElementById('game-output');
 
 let hasGameStarted = false;
 
@@ -77,11 +78,6 @@ async function raceHandler(players) {
     for (const player of players) {
       await sleep(100);
 
-      if (player.score > 99) {
-        winner = player;
-        break winnerLoop;
-      }
-
       const playerElement = document.getElementById(
         `player-${player.playerNumber}`
       );
@@ -98,10 +94,36 @@ async function raceHandler(players) {
       playerElement.style.marginLeft = `${player.score}%`;
 
       console.log(player);
+
+      if (player.score > 99) {
+        winner = player;
+        break winnerLoop;
+      }
     }
   }
 
-  outputWinner();
+  createOutputTable(players);
+}
+
+function createOutputTable(players) {
+  // Sort by score
+  const playersSortedByScore = players.sort(function (a, b) {
+    return a.score - b.score;
+  });
+
+  outputTable.hidden = false;
+
+  const tableBody = outputTable.getElementsByTagName('tbody')[0];
+
+  for (const player of playersSortedByScore) {
+    const tableRow = tableBody.insertRow(0);
+
+    const playerNumberTableData = tableRow.insertCell();
+    playerNumberTableData.textContent = player.playerNumber;
+
+    const playerScoreTableData = tableRow.insertCell();
+    playerScoreTableData.textContent = player.score;
+  }
 }
 
 function getNumberOfPlayers() {
