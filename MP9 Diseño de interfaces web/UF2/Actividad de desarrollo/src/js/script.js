@@ -4,16 +4,16 @@ const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
 const outputTable = document.getElementById('game-output');
 
+const gameFormResetButton = document.getElementById('reset-btn');
+
 let hasGameStarted = false;
 
 function gameStartHandler(event) {
   event.preventDefault();
 
-  if (hasGameStarted) {
-    gameResetHandler();
-  }
+  gameResetHandler();
 
-  hasGameStarted = true;
+  gameFormResetButton.hidden = false;
 
   const arrayOfPlayers = [];
 
@@ -60,9 +60,13 @@ function gameStartHandler(event) {
 }
 
 function gameResetHandler() {
-  hasGameStarted = false;
+  gameFormResetButton.hidden = true;
 
   gameTable.innerHTML = '';
+
+  outputTable.hidden = true;
+
+  outputTable.getElementsByTagName('tbody')[0].innerHTML = '';
 }
 
 async function raceHandler(players) {
