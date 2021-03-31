@@ -1,6 +1,6 @@
 'use strict';
 
-//  4, 5, 6, 7, 11
+//  4, 7, 11
 
 const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
@@ -78,13 +78,11 @@ async function raceHandler(players) {
 
   const scoreToWin = getScoreToWin();
 
-  const carLaneWidth = document
-    .getElementById(`car-lane-1`)
-    .getBoundingClientRect().width;
+  const sleepMS = 100;
 
   winnerLoop: while (!winner) {
     for (const player of players) {
-      await sleep(100);
+      await sleep(sleepMS);
 
       const playerElement = document.getElementById(
         `player-${player.playerNumber}`
@@ -98,8 +96,13 @@ async function raceHandler(players) {
         player.score = 100;
       }
 
-      // playerElement.animate([])
-      playerElement.style.marginLeft = `${player.score}%`;
+      playerElement.animate([{ marginLeft: `${player.score}%` }], {
+        duration: sleepMS,
+        easing: 'ease-in-out',
+        fill: 'both',
+      }).onfinish = () => {
+        playerElement.style.marginLeft = `${player.score}%`;
+      };
 
       console.log(player);
 
