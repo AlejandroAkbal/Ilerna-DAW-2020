@@ -92,8 +92,8 @@ async function raceHandler(players) {
 
       player.score += turnCarAdvantage;
 
-      if (player.score > 99) {
-        player.score = 100;
+      if (player.score > scoreToWin) {
+        player.score = scoreToWin;
       }
 
       playerElement.animate([{ marginLeft: `${player.score}%` }], {
