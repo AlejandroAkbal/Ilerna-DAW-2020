@@ -1,5 +1,7 @@
 'use strict';
 
+//  4, 5, 6, 7, 11
+
 const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
 const outputTable = document.getElementById('game-output');
@@ -19,12 +21,14 @@ function gameStartHandler(event) {
 
   const numberOfPlayers = getNumberOfPlayers();
 
+  // Populate array with objects
   for (let index = 1; index < numberOfPlayers + 1; index++) {
     const imagePath = `img/car${index}.png`;
 
     arrayOfPlayers.push({ playerNumber: index, score: 0, imagePath });
   }
 
+  // Create DOM game table
   arrayOfPlayers.forEach((player) => {
     const carContainerElement = document.createElement('li');
     carContainerElement.classList.add('car-container');
@@ -72,11 +76,11 @@ function gameResetHandler() {
 async function raceHandler(players) {
   let winner = undefined;
 
+  const scoreToWin = getScoreToWin();
+
   const carLaneWidth = document
     .getElementById(`car-lane-1`)
     .getBoundingClientRect().width;
-
-  // debugger;
 
   winnerLoop: while (!winner) {
     for (const player of players) {
@@ -99,7 +103,7 @@ async function raceHandler(players) {
 
       console.log(player);
 
-      if (player.score > 99) {
+      if (player.score >= scoreToWin) {
         winner = player;
         break winnerLoop;
       }
@@ -132,6 +136,10 @@ function createOutputTable(players) {
 
 function getNumberOfPlayers() {
   return Number(document.getElementById('number-of-players-select').value);
+}
+
+function getScoreToWin() {
+  return Number(document.getElementById('score-to-win-input').value);
 }
 
 function calculateCarAdvantage() {

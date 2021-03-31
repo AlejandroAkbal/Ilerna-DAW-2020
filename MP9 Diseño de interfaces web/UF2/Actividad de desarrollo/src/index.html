@@ -18,7 +18,7 @@
   <body>
     <!-- Game form -->
     <form action="#" id="game-form">
-      <label for="number-of-players-select">Players</label>
+      <label for="number-of-players-select"> Players </label>
 
       <select name="players" id="number-of-players-select">
         <option value="1">One</option>
@@ -31,6 +31,16 @@
         <option value="8">Eight</option>
         <option value="9">Nine</option>
       </select>
+
+      <label for="score-to-win-input"> Score to win </label>
+
+      <input
+        type="number"
+        name="score-to-win"
+        id="score-to-win-input"
+        value="100"
+        max="100"
+      />
 
       <button id="submit-btn" type="submit">Play</button>
 
