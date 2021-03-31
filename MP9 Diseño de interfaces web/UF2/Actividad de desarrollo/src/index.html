@@ -18,31 +18,36 @@
   <body>
     <!-- Game form -->
     <form action="#" id="game-form">
-      <label for="number-of-players-select"> Players </label>
+      <div>
+        <label for="number-of-players-select"> Players </label>
 
-      <!-- Step 1 -->
-      <select name="players" id="number-of-players-select">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        <option value="4">Four</option>
-        <option value="5">Five</option>
-        <option value="6">Six</option>
-        <option value="7">Seven</option>
-        <option value="8">Eight</option>
-        <option value="9">Nine</option>
-      </select>
+        <!-- Step 1 -->
+        <select name="players" id="number-of-players-select">
+          <option value="1">One</option>
+          <option value="2" selected>Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+          <option value="6">Six</option>
+          <option value="7">Seven</option>
+          <option value="8">Eight</option>
+          <option value="9">Nine</option>
+        </select>
+      </div>
 
-      <label for="score-to-win-input"> Score to win </label>
+      <div>
+        <label for="score-to-win-input"> Score to win </label>
 
-      <!-- Step 4 -->
-      <input
-        type="number"
-        name="score-to-win"
-        id="score-to-win-input"
-        value="100"
-        max="100"
-      />
+        <!-- Step 4 -->
+        <input
+          type="number"
+          name="score-to-win"
+          id="score-to-win-input"
+          value="100"
+          min="1"
+          max="100"
+        />
+      </div>
 
       <!-- Step 6 -->
       <button id="submit-btn" type="submit">Play</button>
