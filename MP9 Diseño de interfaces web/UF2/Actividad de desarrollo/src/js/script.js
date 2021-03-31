@@ -1,15 +1,13 @@
 'use strict';
 
-//  4, 11
-
 const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
 const outputTable = document.getElementById('game-output');
 
+const sleepMS = 100;
+
 let hasGameStarted = false;
 let currentPlayers = [];
-
-const sleepMS = 100;
 
 function gameStartHandler(event) {
   event.preventDefault();
@@ -133,7 +131,7 @@ async function startRacing() {
       // Step 5
       movePlayerTo(player, `${player.score}%`);
 
-      console.log(player);
+      // console.log(player);
 
       // Step 9
       if (player.score >= scoreToWin) {
@@ -223,6 +221,3 @@ function sleep(ms) {
 gameForm.addEventListener('submit', gameStartHandler);
 
 gameForm.addEventListener('reset', gameResetHandler);
-
-// TODO: remove
-// gameForm.submit();

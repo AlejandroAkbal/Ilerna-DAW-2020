@@ -15,9 +15,6 @@ html {
 }
 
 :root {
-  --primary-color: ;
-  --secondary-color: ;
-
   --border-color: #e6e6e6;
 
   --background-color: #fafafa;
@@ -25,7 +22,7 @@ html {
 }
 
 body {
-  background: var(--background-color);
+  background-color: var(--background-color);
 
   padding: 1em 2em;
 }
@@ -50,7 +47,7 @@ body {
 }
 
 #game-form label {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 #number-of-players-select,
@@ -65,8 +62,6 @@ body {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
-
-  /* overflow: auto; */
 }
 
 #game-table > * + * {
@@ -135,13 +130,13 @@ body {
 #game-output > thead > tr > th {
   background-color: var(--background-color);
 
-  border-bottom: 1px dotted var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 #game-output > tbody > tr > td {
   text-align: center;
 
-  /* border-bottom: 1px solid var(--border-color); */
+  border-bottom: 1px solid var(--border-color);
 }
 
 #game-output > thead > tr > th,
