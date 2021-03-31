@@ -38,6 +38,7 @@ function resetGame(hardReset = false) {
   hasGameStarted = false;
   formButtonToggler();
 
+  // Step 7
   if (hardReset) {
     removePlayersFromDOM();
   } else {
@@ -56,6 +57,7 @@ function createPlayersInDom() {
   for (let index = 1; index < numberOfPlayers + 1; index++) {
     const imagePath = `img/car${index}.png`;
 
+    // Step 2
     currentPlayers.push({ playerNumber: index, score: 0, imagePath });
   }
 
@@ -76,6 +78,7 @@ function createPlayersInDom() {
     carImageElement.classList.add('car');
     carImageElement.src = player.imagePath;
     carImageElement.alt = `Car of player ${player.playerNumber}`;
+    // Step 3
     carImageElement.style.marginLeft = '0px';
 
     const finishLineElement = document.createElement('div');
@@ -127,10 +130,12 @@ async function startRacing() {
         player.score = scoreToWin;
       }
 
+      // Step 5
       movePlayerTo(player, `${player.score}%`);
 
       console.log(player);
 
+      // Step 9
       if (player.score >= scoreToWin) {
         winner = player;
         break winnerLoop;
@@ -155,6 +160,7 @@ function movePlayerTo(player, position) {
   };
 }
 
+// Step 10
 function createOutputTable() {
   outputTable.hidden = false;
 
@@ -203,6 +209,7 @@ function getScoreToWin() {
   return Number(document.getElementById('score-to-win-input').value);
 }
 
+// Step 8
 function calculateCarAdvantage() {
   const randomNumberBetween1And10 = Math.floor(Math.random() * 10) + 1;
 
