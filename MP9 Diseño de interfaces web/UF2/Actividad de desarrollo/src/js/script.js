@@ -6,8 +6,6 @@ const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
 const outputTable = document.getElementById('game-output');
 
-const gameFormResetButton = document.getElementById('reset-btn');
-
 let hasGameStarted = false;
 
 function gameStartHandler(event) {
@@ -15,7 +13,8 @@ function gameStartHandler(event) {
 
   gameResetHandler();
 
-  gameFormResetButton.hidden = false;
+  hasGameStarted = true;
+  formButtonHandler();
 
   const arrayOfPlayers = [];
 
@@ -64,7 +63,8 @@ function gameStartHandler(event) {
 }
 
 function gameResetHandler() {
-  gameFormResetButton.hidden = true;
+  hasGameStarted = false;
+  formButtonHandler();
 
   gameTable.innerHTML = '';
 
@@ -132,6 +132,20 @@ function createOutputTable(players) {
     const playerScoreTableData = tableRow.insertCell();
     playerScoreTableData.textContent = player.score;
   }
+}
+
+function formButtonHandler() {
+  const gameFormSubmitButton = document.getElementById('submit-btn');
+  const gameFormResetButton = document.getElementById('reset-btn');
+
+  if (hasGameStarted) {
+    gameFormSubmitButton.hidden = true;
+    gameFormResetButton.hidden = false;
+    return;
+  }
+
+  gameFormSubmitButton.hidden = false;
+  gameFormResetButton.hidden = true;
 }
 
 function getNumberOfPlayers() {
