@@ -1,6 +1,6 @@
 'use strict';
 
-//  4, 7, 11
+//  4, 11
 
 const gameForm = document.getElementById('game-form');
 const gameTable = document.getElementById('game-table');
@@ -9,6 +9,7 @@ const outputTable = document.getElementById('game-output');
 let hasGameStarted = false;
 let currentPlayers = [];
 
+const sleepMS = 100;
 
 function gameStartHandler(event) {
   event.preventDefault();
@@ -17,6 +18,8 @@ function gameStartHandler(event) {
 }
 
 function startGame() {
+  resetGame(true);
+
   hasGameStarted = true;
   formButtonToggler();
 
@@ -31,15 +34,15 @@ function gameResetHandler(event) {
   resetGame();
 }
 
-function resetGame() {
+function resetGame(hardReset = false) {
   hasGameStarted = false;
   formButtonToggler();
 
-  gameTable.innerHTML = '';
-
-  const players = getExistingPlayers();
-
-  resetPlayersPosition(players);
+  if (hardReset) {
+    removePlayersFromDOM();
+  } else {
+    resetPlayersPosition();
+  }
 
   resetOutputTable();
 }
@@ -93,15 +96,20 @@ function removePlayersFromDOM() {
   gameTable.innerHTML = '';
 }
 
+function resetPlayersPosition() {
+  for (const player of currentPlayers) {
+    const playerElement = document.getElementById(
+      `player-${player.playerNumber}`
+    );
 
+    movePlayerTo(player, '0%');
+  }
 }
 
 async function startRacing() {
   let winner = undefined;
 
   const scoreToWin = getScoreToWin();
-
-  const sleepMS = 100;
 
   winnerLoop: while (!winner) {
     for (const player of currentPlayers) {
@@ -119,13 +127,7 @@ async function startRacing() {
         player.score = scoreToWin;
       }
 
-      playerElement.animate([{ marginLeft: `${player.score}%` }], {
-        duration: sleepMS,
-        easing: 'ease-in-out',
-        fill: 'both',
-      }).onfinish = () => {
-        playerElement.style.marginLeft = `${player.score}%`;
-      };
+      movePlayerTo(player, `${player.score}%`);
 
       console.log(player);
 
@@ -139,6 +141,18 @@ async function startRacing() {
   createOutputTable();
 }
 
+function movePlayerTo(player, position) {
+  const playerElement = document.getElementById(
+    `player-${player.playerNumber}`
+  );
+
+  playerElement.animate([{ marginLeft: position }], {
+    duration: sleepMS,
+    easing: 'ease-in-out',
+    fill: 'both',
+  }).onfinish = () => {
+    playerElement.style.marginLeft = position;
+  };
 }
 
 function createOutputTable() {
