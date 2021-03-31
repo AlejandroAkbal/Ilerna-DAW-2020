@@ -1,0 +1,57 @@
+html {
+  box-sizing: border-box;
+}
+
+#game-table {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  /* overflow: auto; */
+}
+
+#game-table > * + * {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.car-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: antiquewhite;
+
+  height: 4em;
+}
+
+.car-container > label {
+  padding: 1em;
+}
+
+.car-lane {
+  flex-grow: 1;
+
+  position: relative;
+
+  height: 100%;
+}
+
+.car {
+  z-index: 1;
+
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+
+  width: 8em;
+  height: auto;
+}
+
+.finish-line {
+  /* The trick to making the car move to the finish line is having the same width */
+  width: 8em;
+  height: 100%;
+
+  background-color: aqua;
+}
