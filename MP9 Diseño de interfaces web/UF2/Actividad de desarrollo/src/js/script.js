@@ -94,8 +94,6 @@ async function raceHandler(players) {
         player.score = 100;
       }
 
-      const carAdvantagePercentToPixels = (carLaneWidth * player.score) / 100;
-
       // playerElement.animate([])
       playerElement.style.marginLeft = `${player.score}%`;
 
