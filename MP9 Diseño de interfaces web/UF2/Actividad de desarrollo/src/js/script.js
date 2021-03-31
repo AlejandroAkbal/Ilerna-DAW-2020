@@ -11,11 +11,42 @@ let hasGameStarted = false;
 function gameStartHandler(event) {
   event.preventDefault();
 
-  gameResetHandler();
+  startGame();
+}
 
+function startGame() {
   hasGameStarted = true;
-  formButtonHandler();
+  formButtonToggler();
 
+  const arrayOfPlayers = writePlayersToDom();
+
+  startRacing(arrayOfPlayers);
+}
+
+function gameResetHandler(event) {
+  event.preventDefault();
+
+  resetGame();
+}
+
+function resetGame() {
+  hasGameStarted = false;
+  formButtonToggler();
+
+  gameTable.innerHTML = '';
+
+  const players = getExistingPlayers();
+
+  resetPlayersPosition(players);
+
+  resetOutputTable();
+}
+
+
+  return players;
+}
+
+function writePlayersToDom() {
   const arrayOfPlayers = [];
 
   const numberOfPlayers = getNumberOfPlayers();
@@ -59,21 +90,13 @@ function gameStartHandler(event) {
     gameTable.appendChild(carContainerElement);
   });
 
-  raceHandler(arrayOfPlayers);
+  return arrayOfPlayers;
 }
 
-function gameResetHandler() {
-  hasGameStarted = false;
-  formButtonHandler();
 
-  gameTable.innerHTML = '';
-
-  outputTable.hidden = true;
-
-  outputTable.getElementsByTagName('tbody')[0].innerHTML = '';
 }
 
-async function raceHandler(players) {
+async function startRacing(players) {
   let winner = undefined;
 
   const scoreToWin = getScoreToWin();
@@ -117,13 +140,12 @@ async function raceHandler(players) {
 }
 
 function createOutputTable(players) {
+  outputTable.hidden = false;
+
   // Sort by score
   const playersSortedByScore = players.sort(function (a, b) {
     return a.score - b.score;
   });
-
-  outputTable.hidden = false;
-
   const tableBody = outputTable.getElementsByTagName('tbody')[0];
 
   for (const player of playersSortedByScore) {
@@ -137,7 +159,13 @@ function createOutputTable(players) {
   }
 }
 
-function formButtonHandler() {
+function resetOutputTable() {
+  outputTable.hidden = true;
+
+  outputTable.getElementsByTagName('tbody')[0].innerHTML = '';
+}
+
+function formButtonToggler() {
   const gameFormSubmitButton = document.getElementById('submit-btn');
   const gameFormResetButton = document.getElementById('reset-btn');
 
