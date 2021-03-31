@@ -7,6 +7,8 @@ const gameTable = document.getElementById('game-table');
 const outputTable = document.getElementById('game-output');
 
 let hasGameStarted = false;
+let currentPlayers = [];
+
 
 function gameStartHandler(event) {
   event.preventDefault();
@@ -18,9 +20,9 @@ function startGame() {
   hasGameStarted = true;
   formButtonToggler();
 
-  const arrayOfPlayers = writePlayersToDom();
+  createPlayersInDom();
 
-  startRacing(arrayOfPlayers);
+  startRacing();
 }
 
 function gameResetHandler(event) {
@@ -42,12 +44,8 @@ function resetGame() {
   resetOutputTable();
 }
 
-
-  return players;
-}
-
-function writePlayersToDom() {
-  const arrayOfPlayers = [];
+function createPlayersInDom() {
+  currentPlayers = [];
 
   const numberOfPlayers = getNumberOfPlayers();
 
@@ -55,11 +53,11 @@ function writePlayersToDom() {
   for (let index = 1; index < numberOfPlayers + 1; index++) {
     const imagePath = `img/car${index}.png`;
 
-    arrayOfPlayers.push({ playerNumber: index, score: 0, imagePath });
+    currentPlayers.push({ playerNumber: index, score: 0, imagePath });
   }
 
   // Create DOM game table
-  arrayOfPlayers.forEach((player) => {
+  currentPlayers.forEach((player) => {
     const carContainerElement = document.createElement('li');
     carContainerElement.classList.add('car-container');
 
@@ -89,14 +87,16 @@ function writePlayersToDom() {
 
     gameTable.appendChild(carContainerElement);
   });
+}
 
-  return arrayOfPlayers;
+function removePlayersFromDOM() {
+  gameTable.innerHTML = '';
 }
 
 
 }
 
-async function startRacing(players) {
+async function startRacing() {
   let winner = undefined;
 
   const scoreToWin = getScoreToWin();
@@ -104,7 +104,7 @@ async function startRacing(players) {
   const sleepMS = 100;
 
   winnerLoop: while (!winner) {
-    for (const player of players) {
+    for (const player of currentPlayers) {
       await sleep(sleepMS);
 
       const playerElement = document.getElementById(
@@ -136,14 +136,16 @@ async function startRacing(players) {
     }
   }
 
-  createOutputTable(players);
+  createOutputTable();
 }
 
-function createOutputTable(players) {
+}
+
+function createOutputTable() {
   outputTable.hidden = false;
 
   // Sort by score
-  const playersSortedByScore = players.sort(function (a, b) {
+  const playersSortedByScore = currentPlayers.sort(function (a, b) {
     return a.score - b.score;
   });
   const tableBody = outputTable.getElementsByTagName('tbody')[0];
